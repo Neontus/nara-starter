@@ -216,6 +216,40 @@ document.addEventListener("DOMContentLoaded", () => {
     mind: getRandomTasks("mind"),
   };
 
+  // Hardcoded inspirational quotes
+  const inspirationalQuotes = [
+    "Believe you can and you're halfway there.",
+    "Every day is a second chance.",
+    "You are stronger than you think.",
+    "Dream big and dare to fail.",
+    "Start where you are. Use what you have. Do what you can.",
+    "Happiness is not by chance, but by choice.",
+    "Your only limit is your mind.",
+    "Do something today that your future self will thank you for.",
+    "Success is not final, failure is not fatal: It is the courage to continue that counts.",
+    "The best way to predict the future is to create it."
+  ];
+
+  // Function to display a random quote
+  function displayInspirationalQuote() {
+    const quoteContainer = document.createElement("div");
+    quoteContainer.className = "inspirational-quote";
+    quoteContainer.style.fontFamily = "Slackside One, sans-serif";
+    quoteContainer.style.fontSize = "5vh";
+    quoteContainer.style.color = "white";
+    quoteContainer.style.textAlign = "center";
+    quoteContainer.style.marginTop = "20px";
+
+    const randomQuote =
+      inspirationalQuotes[Math.floor(Math.random() * inspirationalQuotes.length)];
+    quoteContainer.textContent = randomQuote;
+
+    const welcomeMessage = document.getElementById("welcome-message");
+    if (welcomeMessage) {
+      welcomeMessage.appendChild(quoteContainer);
+    }
+  }
+
   // 2. Utility functions
   function parsePercentage(value) {
     return parseFloat(value.replace("%", ""));
@@ -1112,6 +1146,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // 9. Initialization
   initializeDeerAreas();
+  displayInspirationalQuote(); // Display the quote on the home page
   window.addEventListener(
     "resize",
     debounce(() => {
