@@ -580,6 +580,72 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  function showSpeechBubble(cat, message) {
+    let deerX = 0;
+    let deerY = 0;
+    switch (cat) {
+      case "daily":
+        deerX = 71+10.5;
+        deerY = 64-7;
+        break;
+      case "home":
+        deerX = 67+12;
+        deerY = 80-7;
+        break;
+      case "pet":
+        deerX = 67+12;
+        deerY = 76-7;
+        break;
+      case "friends":
+        deerX = 69+12;
+        deerY = 82-7;
+        break;
+      case "mind":
+        deerX = 70+12;
+        deerY = 78-7;
+        break;
+      case "others":
+        deerX = 33+17;
+        deerY = 14-7;
+        break;
+    }
+
+    const speechBubble = document.createElement("div");
+    speechBubble.className = "speech-bubble";
+    speechBubble.style.position = "absolute";
+    speechBubble.style.left = `${deerX}vw`;
+    speechBubble.style.top = `${deerY}vh`; // Position above the deer
+    speechBubble.style.transform = "translateX(-50%)";
+    speechBubble.style.backgroundImage = "url('assets/bubble_mirrored.svg')";
+    speechBubble.style.backgroundSize = "contain";
+    speechBubble.style.backgroundRepeat = "no-repeat";
+    speechBubble.style.width = "300px"; // Reduce width to better fit the bubble
+    speechBubble.style.height = "120px"; // Adjust height for better proportions
+    speechBubble.style.display = "flex";
+    speechBubble.style.alignItems = "center";
+    speechBubble.style.justifyContent = "center"; // Center the text horizontally
+    speechBubble.style.padding = "10px"; // Simplify padding for better fit
+    speechBubble.style.color = "grey";
+    speechBubble.style.fontSize = "2.5vh"; // Reduce font size for better fit
+    speechBubble.style.lineHeight = "1.2"; // Adjust line height for readability
+    speechBubble.style.fontFamily = "Slackside One, sans-serif";
+    speechBubble.style.textAlign = "center"; 
+    speechBubble.style.padding = "0 0px";
+    speechBubble.style.zIndex = "1000";
+    speechBubble.textContent = message;
+    speechBubble.style.backgroundPosition = "center 20%"; // Adjust position to align text
+    speechBubble.style.padding = "10px 15px"; // Add consistent padding for spacing
+    speechBubble.style.textAlign = "left"; // Align text to the left for better readability
+
+    document.body.appendChild(speechBubble);
+
+    setTimeout(() => {
+      speechBubble.style.transition = "opacity 0.5s ease";
+      speechBubble.style.opacity = "0";
+      speechBubble.addEventListener("transitionend", () => speechBubble.remove());
+    }, 3000);
+  }
+
   function renderTasks(tasks, backgroundIndex, category) {
     const tasksHeader =
       document.getElementById("tasks-header") || document.createElement("div");
@@ -634,6 +700,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (tasks[originalIndex].completed) {
           const deleteButton = taskItem.querySelector(".delete-task");
           if (deleteButton) deleteButton.remove();
+          showSpeechBubble(category, "Well done!");
         }
 
         let newPosition = 0;

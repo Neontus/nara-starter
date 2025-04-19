@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="768" height="512" viewBox="0 0 768 512" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .bubble-fill { fill: rgba(255,255,255,0.5); }
+      .bubble-stroke { stroke: #9c9c9c; stroke-width: 4; }
+    </style>
+  </defs>
+
+  <!-- Cloud‑like speech bubble -->
+  <path d="
+    M 240 90
+    C 180 60 110 80 90 140
+    C 50 150 20 200 40 250
+    C 10 300 40 360 100 370
+    C 120 420 190 450 250 430
+    C 300 470 380 460 420 420
+    C 480 440 540 410 560 360
+    C 610 350 640 300 620 250
+    C 650 200 630 150 580 130
+    C 560 70 490 40 430 70
+    C 380 40 300 40 260 80
+    Z" class="bubble-fill bubble-stroke"/>
+    
+  <!-- Tail (pointing left) -->
+  <path d="
+    M 95 370
+    L 30 400
+    L 110 410
+    Z" class="bubble-fill bubble-stroke"/>
+</svg>
